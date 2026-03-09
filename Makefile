@@ -5,28 +5,30 @@ GRAY = \033[0;37m
 RESET = \033[0m
 BOLD = \033[1m
 
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = 
 
-SRCS = 
+all:
+	mkdir -p /home/lmokhtar/data/mariadb
+	mkdir -p /home/lmokhtar/data/wordpress
+	docker compose -f ./srcs/docker-compose.yml up --build -d
 
-OBJS = $(SRCS:.cpp=.o)
 
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+logs:
+	docker logs nginx
+	docker logs mariadb
+	docker logs wordpress
 
 clean:
-	rm -f $(OBJS)
+	docker stop nginx ; \
+	docker stop mariadb ; \
+	docker stop wordpress ; \
+	docker network rm inception ; \
+	pwd
 
 fclean: clean
-	rm -f $(NAME)
+	@sudo rm -rf /home/lmokhtar/data/mariadb/*
+	@sudo rm -rf /home/lmokhtar/data/wordpress/*
+	@docker system prune -af
 
 push:
 	@echo "$(SEPIA)$(BOLD)Uploading data to Bunker...$(RESET)"
