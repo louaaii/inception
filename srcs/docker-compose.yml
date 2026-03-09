@@ -39,7 +39,7 @@ services:
   env_file: .env
   volumes:
     - wordpress:/var/www/wordpress
-  depends-on:
+  depends_on:
     - mariadb
   restart: on-failure
   expose:
@@ -49,14 +49,14 @@ volumes:
   wordpress:
     driver: local
     driver_opts:
-    type: 'none'
-    o: bind
+      type: 'none'
+      o: bind
     device: '/home/lmokhtar/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
-    type: 'none'
-    o: bind
+      type: 'none'
+      o: bind
     device: '/home/lmokhtar/data/mariadb'
 
 networks:
