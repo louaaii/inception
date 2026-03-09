@@ -19,10 +19,10 @@ RUN openssl req \
 RUN mkdir -p /var/run/nginx
 
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf 
+COPY conf/nginx.conf /etc/nginx/sites-available/default
 
-RUN chmod 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+RUN chmod 755 /var/www/wordpress
+RUN chown -R www-data:www-data /var/www/wordpress
 
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
