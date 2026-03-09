@@ -2,7 +2,7 @@
 
 sleep 10
 
-if [ ! -f "/var/www/wordpress/wp-config.php"]; then
+if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
     wp config create --allow-root \
                     --dbname=$SQL_DATABASE \
                     --dbuser=$SQL_USER \
