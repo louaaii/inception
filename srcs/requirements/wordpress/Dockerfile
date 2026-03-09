@@ -13,7 +13,7 @@ RUN wget https://en.wordpress.org/wordpress-6.9.tar.gz -P /var/www
 
 RUN cd  /var/www && \
         tar -xvf /var/www/wordpress-6.9.tar.gz && \
-        rm tar -xvf /var/www/wordpress-6.9.tar.gz
+        rm /var/www/wordpress-6.9.tar.gz
 
 RUN chown -R root:root /var/www/wordpress
 
