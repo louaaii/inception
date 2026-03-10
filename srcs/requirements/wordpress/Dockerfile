@@ -5,11 +5,11 @@ RUN apt-get update && \
     apt-get install -y php7.4 \
             php-fpm \
             php-mysql \
-            mariadb-client \
+            mariadb-client 
 
 RUN mkdir -p /run/php
     
-RUN wget https://en.wordpress.org/wordpress-6.9.tar.gz -P /var/www
+RUN wget https://wordpress.org/wordpress-6.9.tar.gz -P /var/www
 
 RUN cd  /var/www && \
         tar -xvf /var/www/wordpress-6.9.tar.gz && \
